@@ -20,12 +20,16 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
         while(pb) {pb = pb->next;lengthB++;}
         if(lengthA<=lengthB){
             int n = lengthB - lengthA;
+            pa = headA;
+            pb = headB;
             while(n){
                 pb = pb->next;
                 n--;
             }
         }else{
             int n = lengthA - lengthB;
+            pa = headA;
+            pb = headB;
             while(n){
                 pa = pa->next;
                 n--;
