@@ -13,7 +13,7 @@ ORDER BY Id;
 //计算累加和
 SELECT t.Id,
        t.Score,
-       @x = @x+t.Score as Total
+       @x := @x+t.Score as Total
 FROM
        (SELECT @x := 0) a,
        Scores t;
