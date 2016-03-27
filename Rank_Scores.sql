@@ -24,3 +24,12 @@ SELECT  Score,
 FROM 
         Scores s,(SELECT @curRank :=0) r,(SELECT @prevScore := null) p
 ORDER BY Score Desc;
+//SOLUTION:
+SELECT Score,Rank
+FROM (  SELECT  Score,
+                @curRank := @curRank + IF(@prevScore = Score,0,1) AS Rank,
+                @prevScore := Score
+        FROM 
+                Scores s,(SELECT @curRank :=0) r,(SELECT @prevScore := null) p
+        ORDER BY Score Desc)t;
+
