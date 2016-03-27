@@ -17,3 +17,10 @@ SELECT t.Id,
 FROM
        (SELECT @x := 0) a,
        Scores t;
+//解题，内层
+SELECT  Score,
+        @curRank := @curRank + IF(@prevScore = Score,0,1) AS Rank,
+        @prevScore := Score
+FROM 
+        Scores s,(SELECT @curRank :=0) r,(SELECT @prevScore := null) p
+ORDER BY Score Desc;
