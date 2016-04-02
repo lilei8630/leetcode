@@ -14,17 +14,9 @@ int numDistinct(char * s,char * t){
         for(int j = 1;j<=lens;j++){
             c[i][j] = c[i][j-1];
             if(s[j]==t[i]) c[i][j] +=c[i-1][j-1];
-            printf("%d ",c[i][j]);
         }
-        printf("\n");
-
     }
-
     return c[lent][lens];
-
-
-
-
 }
 
 int  main(){
