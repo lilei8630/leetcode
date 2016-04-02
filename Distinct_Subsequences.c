@@ -1,5 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+/*
+ * 解题思路：
+ *本题目在s的子序列中寻找等于t的个数，本题采用动态规划：
+  设c[i][j]为s{i}中有多少个子序列是t{j}
+  c[i][j] = c[i][j-1] + (s[i-1]==t[j-1]):c[i-1][j-1]:0
+ * */
 int numDistinct(char * s,char * t){
     int lens = strlen(s);
     int lent = strlen(t);
@@ -17,13 +23,6 @@ int numDistinct(char * s,char * t){
             }
         }
     }
-    //for(int i =0;i<=lens;i++){
-      //  for(int j=0;j<=lent;j++){
-        //    printf("%d ",c[i][j]);
-
-        //}
-       // printf("\n");
-   // }
     return c[lent][lens];
 }
 
