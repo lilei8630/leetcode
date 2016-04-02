@@ -5,7 +5,7 @@ int numDistinct(char * s,char * t){
     int lent = strlen(t);
     if(lens==0&&lent==0) return 1;
     if(lent>lens) return 0;
-    int c[10][10]={0};
+    int c[lent+1][lens+1];
     
     for(int i = 0 ; i<=lens;i++) c[0][i] = 1;
     for(int i = 1 ; i<=lent;i++) c[i][0] = 0;
@@ -21,7 +21,7 @@ int numDistinct(char * s,char * t){
 
 int  main(){
    
-    printf("%d\n", numDistinct("rabbbit","rabbit"));
+    printf("%d\n", numDistinct("bccbcdcabadabddbccaddcbabbaaacdba","bccbbdc"));
     return 0;
     
 }
