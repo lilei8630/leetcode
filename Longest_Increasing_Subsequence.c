@@ -7,7 +7,7 @@
 //在非递减序列上查找第一个大于或等于key的位置，如果都小于key，则返回e+1
 int upperBound(int arr[],int s,int e,int key){
     int mid;
-    if(arr[e]<=key) return e+1;
+    if(arr[e]<key) return e+1;
     while(s<e){
         mid = s + (e-s)/2;
         if(arr[mid]<key) 
@@ -26,16 +26,18 @@ int lengthOfLIS(int* nums, int numsSize) {
     for( int i = 0 ;i< numsSize;i++){
         //找到插入的位置
         int pos = upperBound(end,0,len,nums[i]);
+        printf("pos:%d \n",pos);
         end[pos] = nums[i];
         if(len < pos)
             len = pos;
+        for(int i=0;i<len;i++) printf("%d ",end[i]);printf("\n");
     }
     return len;
         
 }
 int main(){
 
-    int arr[] ={2};
+    int arr[] ={2,2,2,2,2,2,2,2,2,2};
     //for(int i = 0;i<9;i++) printf("%d ",arr[i]);
     //printf("\n");
     int res = lengthOfLIS(arr,sizeof(arr)/sizeof(int));
