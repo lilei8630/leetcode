@@ -22,27 +22,23 @@ int lengthOfLIS(int* nums, int numsSize) {
     //用于记录当前LIS的长度
     int len = 0; 
     //用于记录对应长度LIS的最小末尾
-    int *end = (int *) calloc(sizeof(int) *(numsSize+1),0); 
+    int *end = (int *) malloc(sizeof(int) *(numsSize+1)); 
     for( int i = 0 ;i< numsSize;i++){
         //找到插入的位置
         int pos = upperBound(end,0,len,nums[i]);
-        //printf("%d\n",pos);
         end[pos] = nums[i];
         if(len < pos)
             len = pos;
-        //for(int i = 1;i<=len;i++)
-        //    printf("%d ",end[i]);
-        //printf("\n");
     }
     return len;
         
 }
 int main(){
 
-    int arr[] ={2,1,5,3,6,4,8,9,7};
+    int arr[] ={2};
     //for(int i = 0;i<9;i++) printf("%d ",arr[i]);
     //printf("\n");
-    int res = lengthOfLIS(arr,9);
+    int res = lengthOfLIS(arr,sizeof(arr)/sizeof(int));
     printf("%d\n",res);
     return 0;
 }
