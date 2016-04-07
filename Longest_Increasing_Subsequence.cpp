@@ -27,9 +27,19 @@ int lengthOfLIS(vector<int>& nums) {
         }
         return ends.size();
  }
+//trick:利用lower_bound函数来寻找数组中第一个大于或者等于查找值的元素
+int lengthOfLIS_2(vector<int>& nums) {
+    vector<int> v;
+    for(auto a:nums){
+        auto it = lower_bound(v.begin(),v.end(),a);
+        if(it == v.end()) v.push_back(a);
+       else *it = a; 
+    }
+    return v.size();
+}
 
 int main(){
         vector<int> nums = {10, 9, 2, 5, 3, 7, 101, 18};
-        cout << lengthOfLIS(nums) << endl;
+        cout << lengthOfLIS_2(nums) << endl;
         return 0;
 }
